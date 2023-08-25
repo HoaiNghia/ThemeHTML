@@ -26,29 +26,48 @@ $(document).ready(function () {
         autoplay: true,
         arrows: false,
         slidesToShow: 5,
-        autoplaySpeed: 200,
+        autoplaySpeed: 700,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }
+        ]
     })
 
     $('.slider-room').slick({
-        "prevArrow": "<span class=\"fas fa-arrow-left slick-arrow slick-arrow-soft-white slick-arrow-left slick-arrow-centered-y rounded-circle ml-sm-2 ml-xl-4\"></span>",
-        "nextArrow": "<span class=\"fas fa-arrow-right slick-arrow slick-arrow-soft-white slick-arrow-right slick-arrow-centered-y rounded-circle mr-sm-2 mr-xl-4\"></span>",
-        "infinite": true,
-        "centerMode": true,
-        "centerPadding": "150px",
-        "responsive": [{
-            "breakpoint": 992,
-            "settings": {
-                "centerPadding": "120px"
-            },
-            "breakpoint": 768,
-            "settings": {
-                "centerPadding": "80px"
-            },
-            "breakpoint": 554,
-            "settings": {
-                "centerPadding": "50px"
-            }
-        }]
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        centerMode: true,
+        variableWidth: true,
+        infinite: true,
+        focusOnSelect: true,
+        cssEase: 'linear',
+        touchMove: true,
+        prevArrow: `<button type='button' class='slick-prev slick-arrow'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>`,
+        nextArrow: `<button type='button' class='slick-next slick-arrow'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>`,
+    });
+
+    var imgs = $('.slider-room img');
+    imgs.each(function () {
+        var item = $(this).closest('.item');
+        item.css({
+            'background-image': 'url(' + $(this).attr('src') + ')',
+            'background-position': 'center',
+            '-webkit-background-size': 'cover',
+            'background-size': 'cover',
+        });
+        $(this).hide();
     })
 
     /* Demo purposes only */
